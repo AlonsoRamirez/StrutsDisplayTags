@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+"http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+<form-beans>
+<form-bean name="CategoriaForm" type="sv.edu.udb.form.CategoriaForm" />
+<form-bean name="ProductosForm" type="sv.edu.udb.form.ProductosForm" />
+<form-bean name="ProveedorForm" type="sv.edu.udb.form.ProveedorForm" />
+</form-beans>
+<global-exceptions>
+</global-exceptions>
+<global-forwards>
+<forward name="formcategoria" path="/mod_categorias/FormCat.jsp"/>
+<forward name="formproveedor" path="/mod_proveedores/FormProveedor.jsp"/>
+<forward name="menu" path="../Menu.jsp"/>
+<forward name="menu1" path="/Menu.jsp"/>
+</global-forwards>
+
+
+<action-mappings>
+<action name="CategoriaForm"
+path="/Categoria" parameter="method" scope="request"
+type="sv.edu.udb.action.CategoriaAction">
+<forward name="ingresado"
+path="/mod_categorias/Exitoso.jsp"/>
+<forward name="noingresado"
+path="/mod_categorias/Error.jsp"/>
+<forward name="inicio" path="/mod_categorias/FormCat.jsp"/>
+</action>
+
+<action name="ProveedorForm"
+path="/Proveedor" parameter="method" scope="request"
+type="sv.edu.udb.action.ProveedorAction">
+<forward name="inicio" path="/mod_proveedores/FormProveedor.jsp"/>
+</action>
+
+<action name="ProductosForm"
+path="/productos" parameter="method" scope="request"
+type="sv.edu.udb.action.CargarCombosAction">
+<forward name="ingresado"
+path="/mod_productos/FormProductos.jsp"/>
+</action>
+
+</action-mappings>
+<message-resources parameter="sv.edu.udb.resources.AplicationResource"/>
+</struts-config>
